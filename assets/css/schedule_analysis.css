@@ -1,0 +1,92 @@
+.datepick.datepick-multi{
+	width: 450px !important;
+}
+.ui-datepicker-calendar {
+	display: none;
+}
+.red{
+	color: red;
+}
+.warning{
+	margin:0 auto;
+	*margin: 0px auto;
+	_margin: 0px auto;
+	border: solid 1px #DDDDDD;
+	border-radius: 5px;
+	background-color: #F3F3F3;
+	width: 350px;
+	height: 33px;
+}
+.warning-redline{
+	border-radius: 5px 5px 0 0;
+	background-color: #F53A3A;
+	position: relative;
+	width: 100%;
+	height: 4px;
+}
+.warning-display{
+	position: relative;
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	color: #F53A3A;
+	text-align: center;
+	font-size: 0.9em;
+}
+.middle-side{
+	margin:0 auto;
+	*margin: 0px auto;
+	_margin: 0px auto;
+	padding: 10px 0px 10px 0px;
+	width: 350px;
+	min-height: 300px;
+	height: auto;
+}
+.dropdown-menu.category{
+	position: absolute !important;
+	z-index: 99999 !important;
+}
+.input-block{
+	width: 300px;
+	float: left;
+	margin-bottom: 5px;
+}
+.input-block > em{
+	width: 80px;
+	text-align: center;
+	float: left;
+	font-size: 0.9em;
+	line-height: 20px;
+	font-style: normal
+}
+.input-block > input{
+	width: 180px;
+	text-align: center;
+	font-size: 0.9em;
+}
+.category-list{
+	@border: solid 1px;
+	width: 25px;
+	height: 25px;
+	float: right;
+}
+.nav.category{
+	height: 20px;
+}
+.caret.category{
+	margin-left: -10px;
+	border-left: 7px solid rgba(0, 0, 0, 0);
+	border-right: 7px solid rgba(0, 0, 0, 0);
+	border-top: 7px solid #000000;
+	margin-top: -15px;
+}
+.dropdown-toggle.category{
+	height: 25px;
+}
+.disabled-cat{
+	color: gray !important;
+	cursor: default;
+}
+.dropdown-submenu >  .disabled-cat:hover{
+	background-color: #E8E5E5 !important;
+}

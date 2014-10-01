@@ -1,0 +1,241 @@
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container" >
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<i class="icon-cog"></i>
+					</button>
+					<a class="navbar-brand" href="<?php echo base_url('login');?>"><?php echo (isset($_SESSION['system_title']))? $_SESSION['system_title'] : '';?></a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<?php
+					if(!( !isset($_SESSION['login_status']) ||  (isset($_SESSION['login_status']) && $_SESSION['login_status'] != TRUE))){
+					?>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="javscript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i>
+								<?php echo $this->username;?>
+								<b class="caret"></b>
+							</a>
+
+							<ul class="dropdown-menu">
+								<?php
+									if($this->group == 'admin'){
+								?>
+									<li><a href="<?php echo base_url('account');?>">設定</a></li>
+									<li class="divider"></li>
+								<?php
+									}
+								?>
+								<li><a href="<?php echo base_url('logout');?>">登出</a></li>
+							</ul>
+						</li>
+					</ul>
+					<?php
+					}
+					?>
+					<ul class="nav navbar-nav pull-right">
+						<?php if(isset($token) && $token == ""){ ?>
+			              <li id="wb_connect_btn" >
+			                <a href="<?php echo $code_url;?>">
+			                	<img src="<?php echo base_url('assets/css/img/loginbtn_03.png'); ?>" alt="login_button">
+			                </a>
+			              </li>
+			            <?php }?>
+			            <?php if(isset($token) && $token != ""){ ?>
+			                    <li>
+			                      <div style="margin-top:12px;">
+			                        <img style="margin: auto 5px;" width="30" height="30" src="<?php echo $_SESSION['logged_in_user']['profile_image_url']; ?>" alt="profile_image">
+			                        <a style="color: rgb(0, 120, 182); margin: auto 5px auto 0px;" href="<?php echo "http://weibo.com/". $_SESSION['logged_in_user']['profile_url']; ?>" target="_blank"><?php echo $_SESSION['logged_in_user']['screen_name']; ?></a>
+			                        <a  style="color: rgb(153, 153, 153); margin: auto 10px auto 0px;" id="logout_link" href="#">登出</a>
+			                      </div>
+			                    </li>
+		               	<?php }?>
+		            </ul>
+				</div>
+			</div>
+		</nav>
+		<?php
+		if(!( !isset($_SESSION['login_status']) ||  (isset($_SESSION['login_status']) && $_SESSION['login_status'] != TRUE))){
+		?>
+		<div class="subnavbar">
+			<div class="subnavbar-inner">
+				<div class="container">
+					<a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<i class="icon-reorder"></i>
+					</a>
+					<div class="collapse subnav-collapse">
+						<ul class="mainnav">
+							<?php
+							if(isset($_SESSION['authority']['home']) && $_SESSION['authority']['home'] == 1){
+							?>
+								<li id="home_btn">
+									<a href="<?php echo base_url('main_page/home');?>">
+										<i class="icon-home"></i>
+										<span>Home</span>
+									</a>
+								</li>
+							<?php
+							}
+							?>
+							<?php
+							if((isset($_SESSION['authority']['analysis']) && $_SESSION['authority']['analysis'] == 1) ||
+								(isset($_SESSION['authority']['taiwanShopAnalysis']) && $_SESSION['authority']['taiwanShopAnalysis'] == 1) ||
+								(isset($_SESSION['authority']['taiwanProductAnalysis']) && $_SESSION['authority']['taiwanProductAnalysis'] == 1)
+								){
+							?>
+								<li  id="analysis_btn" class="dropdown">
+									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="icon-copy"></i>
+										<span>分析</span>
+			                           					<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu">
+										<?php
+										if(isset($_SESSION['authority']['analysis']) && $_SESSION['authority']['analysis'] == 1){
+										?>
+											<li id="analysis"><a href="<?php echo base_url('main_page/analysis');?>">類別/商品分析</a></li>
+										<?php
+										}
+										?>
+											<!--<li><a href="javascript:void(0);">商品分析</a></li>-->
+										<?php
+										if(isset($_SESSION['authority']['taiwanShopAnalysis']) && $_SESSION['authority']['taiwanShopAnalysis'] == 1){
+										?>
+											<li id="taiwan_shop_analysis"><a href="<?php echo base_url('main_page/taiwanShopAnalysis');?>">品台灣店舖分析</a></li>
+										<?php
+										}
+										if(isset($_SESSION['authority']['taiwanProductAnalysis']) && $_SESSION['authority']['taiwanProductAnalysis'] == 1){
+										?>
+											<li id="taiwan_product_analysis"><a href="<?php echo base_url('main_page/taiwanProductAnalysis');?>">品台灣商品分析</a></li>
+										<?php
+										}
+										?>
+									</ul>
+								</li>
+							<?php
+							}
+							if(isset($_SESSION['authority']['competition']) && $_SESSION['authority']['competition'] == 1 || isset($_SESSION['authority']['taiwanCompetition']) && $_SESSION['authority']['taiwanCompetition'] == 1){
+							?>
+								<li  class="dropdown" id="competition_btn">
+									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="icon-copy"></i>
+										<span>競品分析</span>
+			                           					<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu" >
+										<?php
+										if(isset($_SESSION['authority']['competition']) && $_SESSION['authority']['competition'] == 1){
+										?>
+											<li id="taobao_competition_btn"><a href="<?php echo base_url('main_page/competition');?>">淘寶競品分析</a></li>
+										<?php
+										}
+										if(isset($_SESSION['authority']['taiwanCompetition']) && $_SESSION['authority']['taiwanCompetition'] == 1){
+										?>
+											<li id="taiwan_competition_btn"><a href="<?php echo base_url('main_page/taiwanCompetition');?>">HCT商品競品分析</a></li>
+										<?php
+										}
+										?>
+									</ul>
+								</li>
+
+							<?php
+							}
+							?>
+							<?php
+							if((isset($_SESSION['authority']['schedule']) && $_SESSION['authority']['schedule'] == 1) ||
+								(isset($_SESSION['authority']['schedule_analysis']) && $_SESSION['authority']['schedule_analysis'] == 1) ||
+								(isset($_SESSION['authority']['top_rank']) && $_SESSION['authority']['top_rank'] == 1) ||
+								(isset($_SESSION['authority']['food_top_rank']) && $_SESSION['authority']['food_top_rank'] == 1)
+								){
+							?>
+								<li  id="ec_system_btn" class="dropdown">
+									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="icon-copy"></i>
+										<span>排程系統</span>
+			                           					<b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu">
+										<?php
+										if(isset($_SESSION['authority']['schedule']) && $_SESSION['authority']['schedule'] == 1){
+										?>
+											<li id="schedule_list"><a href="<?php echo base_url('ec_system/schedule');?>">排程</a></li>
+										<?php
+										}
+										if(isset($_SESSION['authority']['schedule_analysis']) && $_SESSION['authority']['schedule_analysis'] == 1){
+										?>
+											<li id="schedule_analysis"><a href="<?php echo base_url('ec_system/schedule_analysis');?>">排程分析</a></li>
+										<?php
+										}
+										if(isset($_SESSION['authority']['top_rank']) && $_SESSION['authority']['top_rank'] == 1){
+										?>
+											<li id="top_rank"><a href="<?php echo base_url('ec_system/top_rank');?>">百大排行</a></li>
+										<?php
+										}
+										if(isset($_SESSION['authority']['food_top_rank']) && $_SESSION['authority']['food_top_rank'] == 1){
+										?>
+											<li id="food_top_rank"><a href="<?php echo base_url('ec_system/food_top_rank');?>">食品類分析</a></li>
+										<?php
+										}
+										?>
+									</ul>
+								</li>
+							<?php
+							}
+							?>
+							<!--
+							<li class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-th"></i>
+									<span>選品</span>
+								</a>
+							</li>
+							<li class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-comment"></i>
+									<span>社群</span>
+								</a>
+							</li>
+							-->
+							<?php
+							if((isset($_SESSION['authority']['campaign_status']) && $_SESSION['authority']['campaign_status'] == 1) ||
+								(isset($_SESSION['authority']['build_campaign']) && $_SESSION['authority']['build_campaign'] == 1)
+								){
+							?>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-comment"></i>
+									<span>活動</span>
+								</a>
+								<ul class="dropdown-menu">
+									<?php
+									if(isset($_SESSION['authority']['campaign_status']) && $_SESSION['authority']['campaign_status'] == 1){
+									?>
+									<li><a href="<?php echo base_url('campaign_status');?>">活動清單</a></li>
+									<?php
+									}
+									if(isset($_SESSION['authority']['build_campaign']) && $_SESSION['authority']['build_campaign'] == 1){
+									?>
+									<li><a href="<?php echo base_url('build_campaign');?>">建立活動</a></li>
+									<?php
+									}
+									?>
+									 <?php if(isset($token) && $token != ""){ ?>
+									<li><a href="<?php echo base_url('setting');?>">設定</a></li>
+									<?php }?>
+								</ul>
+							</li>
+							<?php
+							}
+							?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+		}
+		?>

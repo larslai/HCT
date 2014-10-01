@@ -1,0 +1,11 @@
+Tips:
+1. copy index_sample.php to index.php
+sudo cp index_sample.php index.php
+
+2. edit the environment
+sudo vim index.php
+-------------------------------------
+define('ENVIRONMENT', 'development');
+-------------------------------------
+development: 會用內網 database ip
+production: 會用對外 database ip

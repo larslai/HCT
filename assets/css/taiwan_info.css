@@ -1,0 +1,171 @@
+
+.lb-fromdate, .lb-todate, .lb-preweek, .lb-nxtweek{
+	display:inline-block;
+	margin:5px;
+}
+
+.nopadding .table {
+	margin-bottom: 0;
+}
+
+.shortcuts .shortcut2{
+	width: 128px;
+	padding: 15px 5px;
+}
+
+.date-lister {
+	display: inline-block;
+	margin: 0 10px 0 10px;
+}
+
+.shortcuts .shortcut-label2 {
+	font-size:15px;
+}
+
+.shortcuts .shortcut2.active {
+  background-image: linear-gradient(to bottom, #ffffff 0%, #F6F0C0 100%);
+}
+
+/*------------------------------------------------------------------
+商品詳情
+*/
+
+.product-detail .product-info ul{
+	padding-top: 0;
+	padding-left: 0;
+	list-style:none;
+	list-style-position:inside;
+}
+.product-detail .product-info ul li{
+	padding:6px 0;
+}
+.product-detail .product-info ul li.none{
+	list-style:none;
+}
+
+.product-detail .product-img {
+	height: 220px;
+	width: 220px;
+	margin-top: 10px;
+}
+
+.product-detail .detail-light > div {
+	margin-right:16px;
+}
+
+.light {
+	display: inline-block;
+	vertical-align: middle;
+	height: 22px;
+	width: 22px;
+}
+
+.light.red {
+	background-image: url('img/images/l_red.png');
+	background-repeat: no-repeat;
+	background-size: 95%;
+}
+
+.light.green {
+	background-image: url('img/images/l_green.png');
+	background-repeat: no-repeat;
+	background-size: 95%;
+}
+
+.light.yellow {
+	background-image: url('img/images/l_yellow.png');
+	background-repeat: no-repeat;
+	background-size: 95%;
+}
+
+.product-detail .detail-light .eval {
+	font-size:6px;
+	color:#999;
+}
+
+.product-detail .cmp-stats .stat .stat-desc {
+	font-size: 12px;
+	font-weight: bold;
+	color: #777777;
+}
+
+/*------------------------------------------------------------------
+custom dataTable
+*/
+.table .table-td-centered{
+	text-align:center;
+}
+
+.table .table-td-righted{
+	text-align:right;
+}
+
+table.dataTable {
+	max-width: none;
+}
+/*------------------------------------------------------------------
+overwirte plans.css
+*/
+.plan-price {
+    font-size: 27px;
+}
+
+.plan.core {
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.plan.active .plan-header {
+	background-color: #D98200;
+}
+
+.plan.active .plan-price {
+	background-color: #F90;
+}
+
+.pricing-plans .plan-container{
+	margin-bottom: 1em;
+}
+
+.pricing-plans.plans-6 .plan-container {
+    width: 16.66%;
+}
+
+.plan-features {
+	padding : 0.2em;
+}
+
+.core .plan-features li {
+	padding: 0.8em 0;
+	margin-left: 0.1em;
+	margin-right: 0;
+	font-size: 9pt;
+	text-align:left;
+}
+
+.overview .plan-title {
+	font-size: 11pt;
+}
+.overview .plan-features li {
+	padding: 0.5em 0;
+	font-size: 9pt;
+}
+
+.plan-features li .signal {
+	display: inline-block;
+	vertical-align: middle;
+	height: 16px;
+	width: 14px;
+}
+
+.plan-features li.down .signal {
+	background-image: url('img/images/Down_Icon_16.png');
+	background-repeat: no-repeat;
+	background-size: 95%;
+}
+
+.plan-features li.up .signal {
+	background-image: url('img/images/Up_Icon_16.png');
+	background-repeat: no-repeat;
+	background-size: 95%;
+}

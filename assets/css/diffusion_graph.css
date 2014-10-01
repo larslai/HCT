@@ -1,0 +1,43 @@
+#d3_diffusion_graph{
+   font: 10px sans-serif;
+   background-color: white;
+   padding: 3px;
+   margin: 1px;
+   width:692px;
+   height:450px;
+}
+
+/*.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}*/
+path.link {
+  fill: none;
+  stroke: #000;
+  stroke-width: 4px;
+  cursor: default;
+}
+#licensing {
+  fill: green;
+}
+
+.link.licensing {
+  stroke: green;
+}
+
+.link.resolved {
+  stroke-dasharray: 0,2 1;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
