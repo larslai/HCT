@@ -435,6 +435,9 @@ function getSellerListPerDayApi(id , selected_keyword , selected_cat_lv , line_p
 	get_all:true/false-是否要抓取所有資訊,false-只顯示500筆
 */
 function getSellerCommentsApi(item_id ,function_name ,get_all){
+	alert('無資料');
+	return;
+	/*
 	$.ajax({
 		url: API_url+"getSellerCommentsApi",
 		global: false,
@@ -454,6 +457,7 @@ function getSellerCommentsApi(item_id ,function_name ,get_all){
 			}
 		}
 	});
+	*/
 }
 
 /*

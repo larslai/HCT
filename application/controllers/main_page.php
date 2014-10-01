@@ -8,6 +8,7 @@ class Main_page extends CI_Controller {
 	public $taiwan_products_template_json;
 	public $product_info_template_json;
 	public $comtepition_rate_template_json;
+	public $TW_comtepition_rate_template_json;
 
 	public $curl_url;
 	public $token;
@@ -43,6 +44,7 @@ class Main_page extends CI_Controller {
 		$this->taiwan_products_template_json = $competition_template_json['taiwan_products_template_json'];
 		$this->product_info_template_json = $competition_template_json['product_info_template_json'];
 		$this->comtepition_rate_template_json = $competition_template_json['comtepition_rate_template_json'];
+		$this->TW_comtepition_rate_template_json = $competition_template_json['TW_comtepition_rate_template_json'];
 
       		require_once( $common_config['saetv2']);
 		if(!isset($_SESSION['login_status']) ||  (isset($_SESSION['login_status']) && $_SESSION['login_status'] != TRUE)){
@@ -99,6 +101,7 @@ class Main_page extends CI_Controller {
 	*/
 	public function doCompetition(){
 		$data = array();
+		/*
 		$cat_lv = isset($_POST['cat_lv'])?trim($_POST['cat_lv']): null;
 		$cat_name = isset($_POST['cat_name'])?trim($_POST['cat_name']): null;
 		$startDate = isset($_POST['startDate'])?trim($_POST['startDate']): null;
@@ -106,10 +109,19 @@ class Main_page extends CI_Controller {
 		$brand = isset($_POST['brand'])?trim($_POST['brand']): null;
 		$taiwan_price = isset($_POST['taiwan_price'])?trim($_POST['taiwan_price']): null;
 		$unit = isset($_POST['unit'])?trim($_POST['unit']): null;
+		*/
+		$cat_lv = "cat2_50035978";
+		$cat_name = "糧油米面";
+		$startDate = "2014/08/31-2014/09/30";
+		$product_keyword = "牛肉";
+		$brand = null;
+		$taiwan_price = null;
+		$unit = null;
 
 		//var_dump($cat_lv.'++'.$cat_name);exit;
 		//抓取分類
-		$categorys_obj = $this->getFoodsCategoryApi();
+		//$categorys_obj = $this->getFoodsCategoryApi();
+		$categorys_obj = json_decode($this->categorys_template_json);
 		$data['categorys'] = $this->std_class_object_to_array($categorys_obj);
 
 		//取得昨天至前30天的日期
@@ -124,7 +136,9 @@ class Main_page extends CI_Controller {
 
 		//五大指標-全淘寶
 		//$limit_cat = '美食特產';
-		$row_special_rates = $this->getCompetitionRateApi($cat_lv,$cat_name, $startDate ,$product_keyword, $brand,$taiwan_price ,$unit);
+		//$row_special_rates = $this->getCompetitionRateApi($cat_lv,$cat_name, $startDate ,$product_keyword, $brand,$taiwan_price ,$unit);
+		$row_special_rates =  json_decode($this->comtepition_rate_template_json);
+		$row_special_rates =$this->std_class_object_to_array($row_special_rates);
 		if($row_special_rates['result'] == false){
 			$data['msg'] = $row_special_rates['error_msg'];
 			$this->load->view('competition' ,$data);
@@ -222,7 +236,6 @@ class Main_page extends CI_Controller {
 		$data['categorys'] = $this->std_class_object_to_array($categorys_obj);
 
 		//抓取HCT品台灣商品
-		//$taiwan_products = $this->getTaiwanProductsApi($this->taiwan_hct_seller);
 		$taiwan_products = json_decode($this->taiwan_products_template_json);
 		$taiwan_products = $this->std_class_object_to_array($taiwan_products);
 		$data['taiwan_products'] = $taiwan_products['taiwan_products'];
@@ -252,7 +265,7 @@ class Main_page extends CI_Controller {
 		//五大指標-全淘寶
 		//$limit_cat = '美食特產';
 		//$row_special_rates = $this->getTaiwanHCTProductCompetitionRateApi($cat_lv, $cat_name, $startDate ,$product_id );
-		$row_special_rates =  json_decode($this->comtepition_rate_template_json);
+		$row_special_rates =  json_decode($this->TW_comtepition_rate_template_json);
 		$row_special_rates =$this->std_class_object_to_array($row_special_rates);
 		if($row_special_rates['result'] == false){
 			$data['msg'] = $row_special_rates['error_msg'];

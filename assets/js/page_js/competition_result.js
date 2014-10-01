@@ -144,6 +144,9 @@ function closePriceDetailBlock(block_id){
 
 //呼叫價格區間內某一商品的雷達圖API
 function getCompetitionRateApi(item_id , tr_id ,block_id){
+	alert('無資料');
+	return;
+	/*
 	var product_info_id;
 	if(block_id == 'comparison_spider_web'){
 		//將選擇的商品的底色改變
@@ -163,6 +166,7 @@ function getCompetitionRateApi(item_id , tr_id ,block_id){
 	getProductInfoApi(item_id , 'showProductInfo' , product_info_id ,null , null);
 	//取得雷達圖
 	getCompetitionRadarInfoApi(item_id , 'showCompetitionRate' , block_id ,'loading_excel' , 'lightbox_BG');
+	*/
 }
 
 //顯示價格區間內某一商品的雷達圖
